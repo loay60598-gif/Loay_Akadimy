@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOUAI ACADEMY - المنصة التعليمية الجزائرية الشاملة</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        emeraldCustom: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Tajawal) -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 space-x-reverse cursor-pointer" onclick="navigateToHome()">
+                    <div class="w-12 h-12 bg-gradient-to-tr from-brand-600 to-emeraldCustom-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-brand-500/20 transform hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black bg-gradient-to-l from-brand-700 to-emeraldCustom-600 bg-clip-text text-transparent tracking-tight">LOUAI ACADEMY</span>
+                        <span class="block text-xs font-semibold text-slate-400">أكاديمية لؤي للتحصيل والتعليم التفاعلي</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 space-x-reverse font-bold text-sm">
+                    <button onclick="navigateToHome()" class="text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-500 transition">الرئيسية</button>
+                    <button onclick="scrollToSection('primary')" class="text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-500 transition">الابتدائي</button>
+                    <button onclick="scrollToSection('middle')" class="text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-500 transition">المتوسط</button>
+                    <button onclick="scrollToSection('secondary')" class="text-slate-700 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-500 transition">الثانوي</button>
+                </nav>
+
+                <!-- Controls & Dark Mode -->
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center justify-center">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+        
+        <!-- View 1: Main Hierarchy Index (Home View) -->
+        <div id="home-view" class="space-y-12">
+            <!-- Hero Banner -->
+            <section class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-brand-800 via-brand-700 to-slate-900 text-white p-8 md:p-12 shadow-xl">
+                <!-- Decorative Circles -->
+                <div class="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-brand-500/20 blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-emeraldCustom-500/20 blur-3xl pointer-events-none"></div>
+
+                <div class="relative z-10 max-w-3xl mx-auto text-center space-y-6">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-emerald-300 text-xs md:text-sm font-semibold tracking-wide border border-white/10 backdrop-blur-md">
+                        <i class="fa-solid fa-star text-amber-300 ml-1"></i> مرحباً بك في LOUAI ACADEMY
+                    </span>
+                    <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">
+                        مرحباً بك لتعلم مع LOUAI ACADEMY
+                    </h1>
+                    <p class="text-slate-200 text-base md:text-lg leading-relaxed font-light">
+                        تجمع شامل لجميع الدروس والملخصات، نماذج الفروض والاختبارات المحلولة لكافة السنوات والمراحل الدراسية والشعب بأسلوب سهل وبسيط.
+                    </p>
+
+                    <!-- Search Bar -->
+                    <div class="relative max-w-xl mx-auto pt-2">
+                        <input type="text" id="main-search-input" onkeyup="handleSearch(this.value)" placeholder="ابحث عن مادة، سنة، فرض أو اختبار..." class="w-full pl-12 pr-5 py-4 rounded-2xl bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/30 font-medium placeholder-slate-400 border-0">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-7 text-slate-400 text-lg"></i>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Educational Levels Section (Hierarchy Pyramid) -->
+            <div id="pyramid-container" class="space-y-12">
+                <!-- Primary Stage -->
+                <section id="primary" class="space-y-6">
+                    <div class="flex items-center space-x-3 space-x-reverse border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-child text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-black">التعليم الابتدائي</h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                        <button onclick="openSubjectSelector('التعليم الابتدائي', 'السنة الأولى ابتدائي')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-brand-600 dark:text-brand-400 mb-1">الطور الأول</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 1 ابتدائي</h3>
+                            <p class="text-xs text-slate-400 mt-2">7 مواد أساسية</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم الابتدائي', 'السنة الثانية ابتدائي')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-brand-600 dark:text-brand-400 mb-1">الطور الأول</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 2 ابتدائي</h3>
+                            <p class="text-xs text-slate-400 mt-2">7 مواد أساسية</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم الابتدائي', 'السنة الثالثة ابتدائي')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-brand-600 dark:text-brand-400 mb-1">الطور الثاني</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 3 ابتدائي</h3>
+                            <p class="text-xs text-slate-400 mt-2">8 مواد دراسية</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم الابتدائي', 'السنة الرابعة ابتدائي')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-brand-600 dark:text-brand-400 mb-1">الطور الثاني</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 4 ابتدائي</h3>
+                            <p class="text-xs text-slate-400 mt-2">8 مواد دراسية</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم الابتدائي', 'السنة الخامسة ابتدائي')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group border-brand-500/40">
+                            <span class="block text-xs font-bold text-amber-500 mb-1"><i class="fa-solid fa-award ml-1"></i>شهادة الابتدائية</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 5 ابتدائي</h3>
+                            <p class="text-xs text-slate-400 mt-2">8 مواد + حلول الشاملة</p>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Middle Stage -->
+                <section id="middle" class="space-y-6">
+                    <div class="flex items-center space-x-3 space-x-reverse border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-user-graduate text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-black">التعليم المتوسط</h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <button onclick="openSubjectSelector('التعليم المتوسط', 'السنة الأولى متوسط')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">1 متوسط</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 1 متوسط</h3>
+                            <p class="text-xs text-slate-400 mt-2">جميع المواد والدروس</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم المتوسط', 'السنة الثانية متوسط')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">2 متوسط</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 2 متوسط</h3>
+                            <p class="text-xs text-slate-400 mt-2">جميع المواد والدروس</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم المتوسط', 'السنة الثالثة متوسط')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-semibold text-blue-600 dark:text-blue-400 mb-1">3 متوسط</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 3 متوسط</h3>
+                            <p class="text-xs text-slate-400 mt-2">جميع المواد والدروس</p>
+                        </button>
+                        <button onclick="openSubjectSelector('التعليم المتوسط', 'السنة الرابعة متوسط')" class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-amber-300 dark:border-amber-500/40 shadow-sm hover:shadow-md hover:border-brand-500 dark:hover:border-brand-500 transition text-right group">
+                            <span class="block text-xs font-bold text-amber-500 mb-1"><i class="fa-solid fa-certificate ml-1"></i>شهادة BEM</span>
+                            <h3 class="text-lg font-bold group-hover:text-brand-600 transition">السنة 4 متوسط</h3>
+                            <p class="text-xs text-slate-400 mt-2">حلول شواهد + بنك مواضيع</p>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Secondary Stage (With Streams/Branches) -->
+                <section id="secondary" class="space-y-6">
+                    <div class="flex items-center space-x-3 space-x-reverse border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-book-open text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-black">التعليم الثانوي (كافة الشعب)</h2>
+                    </div>
+
+                    <!-- Year Tabs for Secondary -->
+                    <div class="space-y-6">
+                        <!-- 1st Year Secondary -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700/60 space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center">
+                                <span class="w-3 h-3 bg-purple-500 rounded-full ml-2"></span> السنة الأولى ثانوي
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'أولى ثانوي', 'جذع مشترك علوم وتكنولوجيا')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:border-brand-500 border border-transparent transition text-right flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-sm">جذع مشترك علوم وتكنولوجيا</h4>
+                                        <p class="text-xs text-slate-400 mt-1">رياضيات، فيزياء، علوم، تكنولوجيا...</p>
+                                    </div>
+                                    <i class="fa-solid fa-microscope text-brand-500"></i>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'أولى ثانوي', 'جذع مشترك آداب')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 dark:hover:bg-brand-900/20 hover:border-brand-500 border border-transparent transition text-right flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-bold text-sm">جذع مشترك آداب</h4>
+                                        <p class="text-xs text-slate-400 mt-1">أدب عربي، تاريخ، جغرافيا، لغات...</p>
+                                    </div>
+                                    <i class="fa-solid fa-pen-nib text-purple-500"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2nd Year Secondary -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-700/60 space-y-4">
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center">
+                                <span class="w-3 h-3 bg-indigo-500 rounded-full ml-2"></span> السنة الثانية ثانوي
+                            </h3>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'علوم تجريبية')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">علوم تجريبية</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'رياضيات')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">رياضيات</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'تقني رياضي')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">تقني رياضي (هندسة)</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'تسيير واقتصاد')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">تسيير واقتصاد</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'آداب وفلسفة')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">آداب وفلسفة</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثانية ثانوي', 'لغات أجنبية')" class="p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-brand-50 text-right transition border border-transparent hover:border-brand-500">
+                                    <h4 class="font-bold text-xs">لغات أجنبية</h4>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 3rd Year Secondary (BAC) -->
+                        <div class="bg-gradient-to-r from-amber-500/10 via-brand-500/10 to-transparent dark:from-amber-500/20 p-6 rounded-3xl border-2 border-amber-400/50 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-xl font-black text-slate-900 dark:text-white flex items-center">
+                                    <i class="fa-solid fa-award text-amber-500 ml-2"></i> السنة الثالثة ثانوي (شهادة البكالوريا BAC)
+                                </h3>
+                                <span class="px-3 py-1 bg-amber-400 text-slate-900 font-bold text-xs rounded-full">بكالوريا الجزائر</span>
+                            </div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'علوم تجريبية')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">علوم تجريبية</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'رياضيات')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">رياضيات</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'تقني رياضي')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">تقني رياضي (4 هندسات)</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'تسيير واقتصاد')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">تسيير واقتصاد</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'آداب وفلسفة')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">آداب وفلسفة</h4>
+                                </button>
+                                <button onclick="openSubjectSelector('التعليم الثانوي', 'ثالثة ثانوي', 'لغات أجنبية')" class="p-4 rounded-xl bg-white dark:bg-slate-800 shadow-sm hover:border-amber-500 border transition text-right">
+                                    <h4 class="font-bold text-xs">لغات أجنبية</h4>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- View 2: Subject Selector Modal / View -->
+        <div id="subject-view" class="hidden space-y-8">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <button onclick="navigateToHome()" class="text-xs font-bold text-brand-600 dark:text-brand-400 mb-2 inline-flex items-center">
+                        <i class="fa-solid fa-arrow-right ml-1"></i> العودة للرئيسية
+                    </button>
+                    <h2 id="selected-year-title" class="text-3xl font-black"></h2>
+                    <p id="selected-year-subtitle" class="text-slate-400 text-sm mt-1"></p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h3 class="text-lg font-bold">اختر المادة الدراسية:</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="subjects-grid">
+                    <!-- Dynamically populated subjects -->
+                </div>
+            </div>
+        </div>
+
+        <!-- View 3: Detail Subject Page (Lessons, 10 Exams & Tests per trimester) -->
+        <div id="detail-view" class="hidden space-y-8">
+            <!-- Breadcrumbs -->
+            <div class="flex items-center justify-between">
+                <button onclick="backToSubjects()" class="text-xs font-bold text-brand-600 dark:text-brand-400 inline-flex items-center">
+                    <i class="fa-solid fa-arrow-right ml-1"></i> اختيار مادة أخرى
+                </button>
+                <span id="detail-breadcrumbs" class="text-xs text-slate-400"></span>
+            </div>
+
+            <!-- Header Info -->
+            <div class="bg-gradient-to-r from-brand-700 to-slate-800 text-white p-8 rounded-3xl shadow-lg flex justify-between items-center">
+                <div>
+                    <span class="px-3 py-1 bg-white/10 text-emerald-300 text-xs rounded-full border border-white/10">محتوى شامل ومحلول</span>
+                    <h2 id="detail-subject-title" class="text-3xl font-black mt-2"></h2>
+                    <p id="detail-subject-desc" class="text-slate-200 text-sm mt-1"></p>
+                </div>
+                <div class="text-5xl opacity-20 hidden sm:block">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+            </div>
+
+            <!-- Trimester Tabs -->
+            <div class="flex border-b border-slate-200 dark:border-slate-800 space-x-4 space-x-reverse">
+                <button onclick="switchTrimester(1)" id="tab-trim-1" class="px-6 py-3 font-bold border-b-2 border-brand-500 text-brand-600 text-sm transition">الفصل الأول (الثلاثي 1)</button>
+                <button onclick="switchTrimester(2)" id="tab-trim-2" class="px-6 py-3 font-bold text-slate-400 hover:text-slate-700 text-sm transition">الفصل الثاني (الثلاثي 2)</button>
+                <button onclick="switchTrimester(3)" id="tab-trim-3" class="px-6 py-3 font-bold text-slate-400 hover:text-slate-700 text-sm transition">الفصل الثالث (الثلاثي 3)</button>
+            </div>
+
+            <!-- Content Area (Lessons & 10 Tests / Exams) -->
+            <div class="space-y-10">
+                <!-- Lessons Summaries Section -->
+                <section class="space-y-4">
+                    <h3 class="text-xl font-bold flex items-center">
+                        <i class="fa-solid fa-bookmark text-brand-500 ml-2"></i> ملخصات الدروس المرتبة
+                    </h3>
+                    <div id="lessons-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Populated Lessons -->
+                    </div>
+                </section>
+
+                <!-- Quizzes / Tests Section (10 Models) -->
+                <section class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa-solid fa-file-lines text-blue-500 ml-2"></i> نماذج الفروض (10 نماذج محلولة)
+                        </h3>
+                        <span class="text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full font-semibold">10 نماذج</span>
+                    </div>
+                    <div id="tests-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <!-- Populated 10 Tests -->
+                    </div>
+                </section>
+
+                <!-- Exams Section (10 Models) -->
+                <section class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold flex items-center">
+                            <i class="fa-solid fa-graduation-cap text-purple-500 ml-2"></i> نماذج الاختبارات (10 نماذج محلولة)
+                        </h3>
+                        <span class="text-xs bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400 px-3 py-1 rounded-full font-semibold">10 نماذج كاملة</span>
+                    </div>
+                    <div id="exams-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                        <!-- Populated 10 Exams -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Document Viewer (PDF Preview & Solution Print) -->
+    <div id="doc-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center no-print">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <span class="w-3 h-3 bg-brand-500 rounded-full"></span>
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base">معاينة المستند والحل بالتفصيل</h3>
+                </div>
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <button onclick="window.print()" class="px-3 py-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition flex items-center">
+                        <i class="fa-solid fa-print ml-1"></i> طباعة / حفظ PDF
+                    </button>
+                    <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-sm transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content (Printable Area) -->
+            <div class="p-6 md:p-8 overflow-y-auto space-y-6 flex-grow" id="printable-modal-content">
+                <!-- Document Title Block (Always appears on print) -->
+                <div class="border-b-2 border-slate-800 pb-4 mb-6 text-center space-y-2">
+                    <div class="flex justify-between items-center text-xs text-slate-500 mb-2">
+                        <span>الجمهورية الجزائرية الديمقراطية الشعبية</span>
+                        <span class="font-bold text-brand-600">LOUAI ACADEMY</span>
+                    </div>
+                    <h2 id="modal-doc-title" class="text-2xl font-black text-slate-900"></h2>
+                    <p id="modal-doc-subtitle" class="text-sm font-semibold text-slate-600"></p>
+                </div>
+
+                <!-- Main Detailed Body -->
+                <div id="modal-doc-body" class="space-y-6">
+                    <!-- Dynamic details inserted by JS -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="px-6 py-4 bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-700 text-left no-print flex justify-between items-center">
+                <span class="text-xs text-slate-400">جميع الحقوق محفوظة © LOUAI ACADEMY 2026</span>
+                <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs rounded-xl hover:bg-slate-300 transition">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 no-print mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <p class="font-bold text-slate-800 dark:text-slate-200 text-sm">LOUAI ACADEMY - المنصة التعليمية الجزائرية الشاملة</p>
+            <p class="text-xs text-slate-400">تجمع جميع الدروس، الملخصات، الفروض، والاختبارات المحلولة من الابتدائي إلى البكالوريا.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // State Management
+        let currentLevel = '';
+        let currentYear = '';
+        let currentStream = '';
+        let currentSubject = '';
+        let currentTrimester = 1;
+
+        // Accurate Subject Maps based on exact user specifications (No Amazigh)
+        const stageSubjects = {
+            primary12: [
+                'اللغة العربية',
+                'الرياضيات',
+                'التربية الإسلامية',
+                'التربية المدنية',
+                'التربية العلمية والتكنولوجية',
+                'التربية البدنية',
+                'التربية الفنية والتشكيلية'
+            ],
+            primary345: [
+                'اللغة العربية',
+                'الرياضيات',
+                'اللغة الفرنسية',
+                'العلوم والتكنولوجيا',
+                'التربية الإسلامية',
+                'التربية المدنية',
+                'التاريخ والجغرافيا',
+                'التربية الفنية'
+            ],
+            middle: [
+                'اللغة العربية',
+                'الرياضيات',
+                'التاريخ والجغرافيا',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'علوم الطبيعة والحياة',
+                'العلوم الفيزيائية والتكنولوجيا',
+                'التربية الإسلامية',
+                'التربية المدنية',
+                'التربية التشكيلية',
+                'التربية البدنية والرياضية',
+                'الإعلام الآلي'
+            ],
+            sec1Tech: [
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'علوم الطبيعة والحياة',
+                'التكنولوجيا',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'العلوم الإسلامية',
+                'المعلوماتية',
+                'التربية البدنية والرياضية'
+            ],
+            sec1Lit: [
+                'اللغة العربية وآدابها',
+                'التاريخ والجغرافيا',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'العلوم الإسلامية',
+                'الرياضيات',
+                'علوم الطبيعة والحياة',
+                'المعلوماتية',
+                'التربية البدنية والرياضية'
+            ],
+            sec2Philosophy: [
+                'اللغة العربية وآدابها',
+                'الفلسفة',
+                'التاريخ والجغرافيا',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'العلوم الإسلامية',
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'علوم الطبيعة والحياة',
+                'التربية الفنية',
+                'التربية البدنية والرياضية'
+            ],
+            sec2Languages: [
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'اللغة الأجنبية الثالثة',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'العلوم الإسلامية',
+                'الرياضيات',
+                'التربية الفنية',
+                'التربية البدنية والرياضية'
+            ],
+            sec2ExpSci: [
+                'الرياضيات',
+                'علوم الطبيعة والحياة',
+                'العلوم الفيزيائية',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'العلوم الإسلامية',
+                'الإعلام الآلي',
+                'التربية البدنية والرياضية'
+            ],
+            sec2Math: [
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'علوم الطبيعة والحياة',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'العلوم الإسلامية',
+                'الإعلام الآلي',
+                'التربية البدنية والرياضية'
+            ],
+            sec2TechMath: [
+                'التكنولوجيا',
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'العلوم الإسلامية',
+                'التربية البدنية والرياضية'
+            ],
+            sec2Management: [
+                'التسيير المحاسبي والمالي',
+                'الاقتصاد والمناجمنت',
+                'القانون',
+                'الرياضيات',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'العلوم الإسلامية',
+                'التربية البدنية والرياضية'
+            ],
+            bacExpSci: [
+                'علوم الطبيعة والحياة',
+                'العلوم الفيزيائية',
+                'الرياضيات',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'العلوم الإسلامية',
+                'الفلسفة',
+                'التربية البدنية والرياضية'
+            ],
+            bacMath: [
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'علوم الطبيعة والحياة',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'العلوم الإسلامية',
+                'الفلسفة',
+                'التربية البدنية والرياضية'
+            ],
+            bacTechMath: [
+                'الرياضيات',
+                'العلوم الفيزيائية',
+                'التكنولوجيا',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'العلوم الإسلامية',
+                'الفلسفة',
+                'التربية البدنية والرياضية'
+            ],
+            bacManagement: [
+                'المحاسبة والمالية',
+                'الاقتصاد والمناجمنت',
+                'الرياضيات',
+                'القانون',
+                'اللغة العربية وآدابها',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'التاريخ والجغرافيا',
+                'العلوم الإسلامية',
+                'الفلسفة',
+                'التربية البدنية والرياضية'
+            ],
+            bacPhilosophy: [
+                'اللغة العربية وآدابها',
+                'الفلسفة',
+                'التاريخ والجغرافيا',
+                'اللغة الفرنسية',
+                'اللغة الإنجليزية',
+                'الرياضيات',
+                'العلوم الإسلامية',
+                'التربية البدنية والرياضية'
+            ],
+            bacLanguages: [
+                'اللغة الأجنبية الأولى',
+                'اللغة الإنجليزية',
+                'اللغة الفرنسية',
+                'اللغة العربية وآدابها',
+                'التاريخ والجغرافيا',
+                'الفلسفة',
+                'الرياضيات',
+                'العلوم الإسلامية',
+                'التربية البدنية والرياضية'
+            ]
+        };
+
+        // Function to determine which subject list to load based on hierarchy
+        function getSubjectsList(level, year, stream) {
+            if (level === 'التعليم الابتدائي') {
+                if (year === 'السنة الأولى ابتدائي' || year === 'السنة الثانية ابتدائي') {
+                    return stageSubjects.primary12;
+                } else {
+                    return stageSubjects.primary345;
+                }
+            } else if (level === 'التعليم المتوسط') {
+                return stageSubjects.middle;
+            } else if (level === 'التعليم الثانوي') {
+                if (year === 'أولى ثانوي') {
+                    if (stream.includes('علوم')) return stageSubjects.sec1Tech;
+                    return stageSubjects.sec1Lit;
+                } else if (year === 'ثانية ثانوي') {
+                    if (stream.includes('علوم تجريبية')) return stageSubjects.sec2ExpSci;
+                    if (stream.includes('رياضيات')) return stageSubjects.sec2Math;
+                    if (stream.includes('تقني رياضي')) return stageSubjects.sec2TechMath;
+                    if (stream.includes('تسيير واقتصاد')) return stageSubjects.sec2Management;
+                    if (stream.includes('آداب وفلسفة')) return stageSubjects.sec2Philosophy;
+                    if (stream.includes('لغات أجنبية')) return stageSubjects.sec2Languages;
+                } else if (year === 'ثالثة ثانوي') {
+                    if (stream.includes('علوم تجريبية')) return stageSubjects.bacExpSci;
+                    if (stream.includes('رياضيات')) return stageSubjects.bacMath;
+                    if (stream.includes('تقني رياضي')) return stageSubjects.bacTechMath;
+                    if (stream.includes('تسيير واقتصاد')) return stageSubjects.bacManagement;
+                    if (stream.includes('آداب وفلسفة')) return stageSubjects.bacPhilosophy;
+                    if (stream.includes('لغات أجنبية')) return stageSubjects.bacLanguages;
+                }
+            }
+            return stageSubjects.middle; // Default fallback
+        }
+
+        // Modal Controls
+        function closeModal() {
+            const modal = document.getElementById('doc-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function viewDocument(title, subtitle, pdfUrl) {
+            document.getElementById('modal-doc-title').innerText = title;
+            document.getElementById('modal-doc-subtitle').innerText = subtitle;
+            
+            const body = document.getElementById('modal-doc-body');
+            body.innerHTML = `
+                <div class="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200 p-4 rounded-xl text-sm mb-4">
+                    <i class="fa-solid fa-circle-info ml-1"></i> هذا النموذج مصمم للمعاينة والطباعة المباشرة. يمكنك حفظه أو طباعته بصيغة PDF.
+                </div>
+                <div class="space-y-4 text-slate-800 dark:text-slate-200 text-right leading-relaxed font-sans">
+                    <h3 class="font-bold text-lg text-brand-700 dark:text-brand-400 border-b pb-2">موضوع الاختبار / الفرض: ${title}</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">المادة: ${subtitle}</p>
+                    <div class="border-2 border-dashed border-slate-200 dark:border-slate-700 p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 text-center space-y-4">
+                        <i class="fa-solid fa-file-pdf text-5xl text-red-500"></i>
+                        <p class="font-semibold text-slate-700 dark:text-slate-300 text-sm">معاينة الملف جاهزة للعرض أو التحميل</p>
+                        <div class="flex justify-center gap-3 pt-2">
+                            <button onclick="window.print()" class="px-4 py-2 bg-brand-600 text-white rounded-xl text-xs font-bold hover:bg-brand-700 transition">
+                                <i class="fa-solid fa-print ml-1"></i> طباعة الموضوع
+                            </button>
+                            <a href="${pdfUrl || '#'}" target="_blank" download class="px-4 py-2 bg-emeraldCustom-600 text-white rounded-xl text-xs font-bold hover:bg-emeraldCustom-700 transition">
+                                <i class="fa-solid fa-download ml-1"></i> تحميل ملف PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const modal = document.getElementById('doc-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+        }
+
+        // Navigation Controls
+        function navigateToHome() {
+            document.getElementById('home-view').classList.remove('hidden');
+            document.getElementById('subject-view').classList.add('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToSection(id) {
+            navigateToHome();
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if(el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function openSubjectSelector(level, year, stream = '') {
+            currentLevel = level;
+            currentYear = year;
+            currentStream = stream;
+
+            document.getElementById('home-view').classList.add('hidden');
+            document.getElementById('subject-view').classList.remove('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+
+            document.getElementById('selected-year-title').innerText = `${year} ${stream ? '- ' + stream : ''}`;
+            document.getElementById('selected-year-subtitle').innerText = `المرحلة: ${level}`;
+
+            const grid = document.getElementById('subjects-grid');
+            grid.innerHTML = '';
+
+            const activeSubjects = getSubjectsList(level, year, stream);
+
+            activeSubjects.forEach(subj => {
+                const btn = document.createElement('button');
+                btn.className = "p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm hover:border-brand-500 hover:shadow-md transition text-right group flex flex-col justify-between h-32";
+                btn.onclick = () => openSubjectDetails(subj);
+                btn.innerHTML = `
+                    <div class="flex justify-between items-center w-full">
+                        <span class="w-8 h-8 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-xs"><i class="fa-solid fa-book"></i></span>
+                        <i class="fa-solid fa-chevron-left text-slate-300 group-hover:text-brand-500 transition text-xs"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base group-hover:text-brand-600 transition">${subj}</h4>
+                        <p class="text-xs text-slate-400 mt-1">10 فروض • 10 اختبارات • دروس</p>
+                    </div>
+                `;
+                grid.appendChild(btn);
+            });
+        }
+
+        function openSubjectDetails(subject) {
+            currentSubject = subject;
+            document.getElementById('subject-view').classList.add('hidden');
+            document.getElementById('detail-view').classList.remove('hidden');
+
+            document.getElementById('detail-breadcrumbs').innerText = `${currentLevel} > ${currentYear} ${currentStream ? '> ' + currentStream : ''} > ${currentSubject}`;
+            document.getElementById('detail-subject-title').innerText = `مادة ${currentSubject}`;
+            document.getElementById('detail-subject-desc').innerText = `جميع دروس ومواضيع فروض واختبارات ${currentYear} ${currentStream} المحلولة بالتفصيل.`;
+
+            switchTrimester(1);
+        }
+
+        function backToSubjects() {
+            document.getElementById('detail-view').classList.add('hidden');
+            document.getElementById('subject-view').classList.remove('hidden');
+        }
+
+        function switchTrimester(trim) {
+            currentTrimester = trim;
+            
+            [1, 2, 3].forEach(t => {
+                const tab = document.getElementById(`tab-trim-${t}`);
+                if (t === trim) {
+                    tab.className = "px-6 py-3 font-bold border-b-2 border-brand-500 text-brand-600 text-sm transition";
+                } else {
+                    tab.className = "px-6 py-3 font-bold text-slate-400 hover:text-slate-700 text-sm transition";
+                }
+            });
+
+            renderTrimesterContent(trim);
+        }
+
+        function renderTrimesterContent(trim) {
+            const lessonsList = document.getElementById('lessons-list');
+            lessonsList.innerHTML = '';
+            
+            const sampleLessons = [
+                { title: `ملخص الدرس 1: المدخل والأساسيات (الفصل ${trim})`, desc: 'شرح مفصل ومسطر لجميع القواعد مع تمارين تطبيقية محلولة.' },
+                { title: `ملخص الدرس 2: التطبيقات والخواص الأساسية (الفصل ${trim})`, desc: 'ملخص شامل موجه للمراجعة السريعة قبل الفروض والامتحانات.' }
+            ];
+
+            sampleLessons.forEach(l => {
+                lessonsList.innerHTML += `
+                    <div class="p-5 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 shadow-sm flex justify-between items-center">
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-sm">${l.title}</h4>
+                            <p class="text-xs text-slate-400">${l.desc}</p>
+                        </div>
+                        <button onclick="viewDocument('${l.title}', '${currentSubject} - ${currentYear}', '')" class="px-3 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-brand-500 hover:text-white rounded-xl text-xs font-bold transition">
+                            عرض الدرس
+                        </button>
+                    </div>
+                `;
+            });
+
+            const testsGrid = document.getElementById('tests-grid');
+            testsGrid.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                testsGrid.innerHTML += `
+                    <button onclick="viewDocument('فرض نموذج ${i} - الفصل ${trim}', '${currentSubject} ${currentYear}', '')" class="p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:border-blue-500 text-right transition group shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-blue-600 text-xs font-bold flex items-center justify-center">${i}</span>
+                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded">مع الحل</span>
+                        </div>
+                        <h4 class="font-bold text-xs group-hover:text-blue-600 transition">الفرض ${i} - ثلاثي ${trim}</h4>
+                        <p class="text-[10px] text-slate-400 mt-1">نموذج مقترح بإجابة مفصلة</p>
+                    </button>
+                `;
+            }
+
+            const examsGrid = document.getElementById('exams-grid');
+            examsGrid.innerHTML = '';
+            for (let i = 1; i <= 10; i++) {
+                examsGrid.innerHTML += `
+                    <button onclick="viewDocument('اختبار نموذج ${i} - الفصل ${trim}', '${currentSubject} ${currentYear}', '')" class="p-4 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700/60 hover:border-purple-500 text-right transition group shadow-sm">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="w-7 h-7 rounded-lg bg-purple-50 dark:bg-purple-900/30 text-purple-600 text-xs font-bold flex items-center justify-center">${i}</span>
+                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 px-2 py-0.5 rounded">مع الحل</span>
+                        </div>
+                        <h4 class="font-bold text-xs group-hover:text-purple-600 transition">الاختبار ${i} - ثلاثي ${trim}</h4>
+                        <p class="text-[10px] text-slate-400 mt-1">امتحان شامل للثلاثي</p>
+                    </button>
+                `;
+            }
+        }
+
+        function handleSearch(val) {
+            if(val.trim().length > 2) {
+                console.log("Searching for:", val);
+            }
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
